@@ -17,20 +17,17 @@ public class GroupAdmin implements Sender{
      */
     @Override
     public void register(Member obj) {
-        try{
-              if (obj.toString() != "false") {
-                  System.out.println("Member is already registered to another GroupAdmin.");
-              } else if (this.cMembers.contains(obj)) {
-                  System.out.println("Member is already registered.");
-              } else {
-                 cMembers.add((ConcreteMember) obj);
-                 obj.update(usb);
-              }
-            }
-        catch(NullPointerException e){
-            e.printStackTrace();
+
+        if (obj.toString() != "false") {
+            System.out.println("Member is already registered to another GroupAdmin.");
+        } else if (this.cMembers.contains(obj)) {
+            System.out.println("Member is already registered.");
+        } else {
+            cMembers.add((ConcreteMember) obj);
+            obj.update(usb);
         }
     }
+
 
     /**
      * This method unregister a ConcreteMember from the observables list, updating Member's usb to null if success
