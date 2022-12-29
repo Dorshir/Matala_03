@@ -14,7 +14,6 @@ public class ConcreteMember implements Member{
         this.tUsb = usb;
         this.flag = true;
     }
-
 }
 
 

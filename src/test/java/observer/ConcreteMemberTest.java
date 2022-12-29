@@ -15,17 +15,20 @@ class ConcreteMemberTest {
         GroupAdmin aAdmin = new GroupAdmin();
         ConcreteMember aMember = new ConcreteMember();
         ConcreteMember bMember = new ConcreteMember();
+        logger.info(()-> JvmUtilities.objectFootprint(aMember,bMember));
         aAdmin.register(aMember);
         aAdmin.register(bMember);
 
-        /* Could test calling update() here for each member,
-        /  but update() being called already when registering.
-        /  hence we check for holding the right usb pointer: */
+        /*  Could test calling update() here for each member,
+        /   but update() being called already when registering.
+        /   Hence, we check for holding the right usb pointer. */
 
         String s = "update check";
         aAdmin.append(s);
         assertAll("This is my check list",
                 ()->assertEquals(aMember.tUsb,bMember.tUsb),
                 ()->assertEquals(aMember.tUsb.toString(),s));
+        logger.info(()-> JvmUtilities.objectFootprint(aMember,bMember));
+        logger.info(()-> JvmUtilities.objectFootprint(aAdmin));
     }
 }
