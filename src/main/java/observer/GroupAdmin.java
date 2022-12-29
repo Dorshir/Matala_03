@@ -8,7 +8,7 @@ import static observer.JvmUtilities.jvmInfo;
 
 public class GroupAdmin implements Sender{
 
-    final ArrayList<ConcreteMember> cMembers= new ArrayList<>();
+    private final ArrayList<Member> cMembers= new ArrayList<>();
     private UndoableStringBuilder usb = new UndoableStringBuilder();
 
     /**
@@ -18,7 +18,7 @@ public class GroupAdmin implements Sender{
     @Override
     public void register(Member obj) {
         try{
-              if (((ConcreteMember) obj).flag != false) {
+              if (obj.toString() != "false") {
                   System.out.println("Member is already registered to another GroupAdmin.");
               } else if (this.cMembers.contains(obj)) {
                   System.out.println("Member is already registered.");
@@ -91,7 +91,10 @@ public class GroupAdmin implements Sender{
      * This method notify all ConcreteMembers in the observables list. Calling their update() method.
      */
     public void notifyObservers(){
-        for (ConcreteMember cm: cMembers) {cm.update(usb);
+        for (Member cm: cMembers) {cm.update(usb);
         }
+    }
+    public ArrayList<Member> getcMembers() {
+        return cMembers;
     }
 }

@@ -2,8 +2,8 @@ package observer;
 
 public class ConcreteMember implements Member{
 
-    UndoableStringBuilder tUsb;
-    boolean flag = false;
+    private UndoableStringBuilder tUsb;
+    public boolean flag = false;
 
     /**
      * This method update this member's UndoAbleStringbuilder to point admin's, flag=true for a registered member
@@ -13,6 +13,14 @@ public class ConcreteMember implements Member{
     public void update(UndoableStringBuilder usb) {
         this.tUsb = usb;
         this.flag = true;
+    }
+    public UndoableStringBuilder gettUsb() {
+        return tUsb;
+    }
+
+    @Override
+    public String toString() {
+        return (flag == true ? "true" : "false");
     }
 }
 
