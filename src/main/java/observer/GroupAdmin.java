@@ -8,8 +8,17 @@ import static observer.JvmUtilities.jvmInfo;
 
 public class GroupAdmin implements Sender{
 
-    private final ArrayList<Member> cMembers= new ArrayList<>();
-    private UndoableStringBuilder usb = new UndoableStringBuilder();
+    private ArrayList<Member> cMembers;
+    private UndoableStringBuilder usb;
+
+    public GroupAdmin(){
+        this.usb = new UndoableStringBuilder();
+        this.cMembers = new ArrayList<>();
+    }
+    public GroupAdmin(UndoableStringBuilder usb) {
+        this.cMembers = new ArrayList<>();
+        this.usb = usb;
+    }
 
     /**
      * This method register a ConcreteMember to the observables list, then notify this ConcreteMember
